@@ -1,88 +1,91 @@
 				###	Köpeğim mi, kedi mi? (Eğer köpeklerden ve Kedilerden korkuyorsanız)	###
 
 
-Proje Adı : " Kopek-Kedi-Kovucu.ino "
+	### DOSYALAR: ###	
+- Kopek-Kedi-Kovucu.ino   -> Ana kod (Arduino IDE ile yukle)
+- README.txt          -> Bu dosya
 
-Arduino tabanlı bir köpek ve kedi kovucu oluşturmak için bazı temel parçaları satın almanız gerekecektir. İşte bu projede kullanabileceğiniz bazı parçalar:
+BAĞLANTI SEMASI:
+----------------
 
+	### PIR HAREKET SENSORU (HC-SR501): ###	
+  VCC  -> 5V (veya 3V3)
+  GND  -> GND
+  OUT  -> D2 (Arduino/ESP32)
 
-Ultrasonik Sensör: Hayvanların yaklaşmasını algılamak için ultrasonik sensör kullanabilirsiniz. Bu sensör, mesafe ölçümü yaparak hayvanların ne kadar yakın olduğunu tespit eder.
-Ultrasonik Sensör Parça isim : [ --- HC-SR04 Mesafe Sensörü --- ]
+	### ULTRASONIK HOPARLOR / PIEZO BUZZER (15-25 kHz calisan): ### 
+  + (Kirmizi)  -> D3 (PWM pini)
+  - (Siyah)    -> GND
 
-Arduino Kartı: Arduino Uno veya Arduino Nano gibi bir mikrodenetleyici kartı seçebilirsiniz. Bu kart, sensörlerle iletişim kurmanızı sağlar.
-Arduino Kartı Parça isim : [ --- Arduino Klon Nano V3.0 Mikrodenetleyici Kart --- ]
+		### DURUM LED'I (OPSIYONEL): ###	
+  Anot (+) -> 220 ohm direnc -> D13
+  Katot (-) -> GND
 
-Buzzer (Sesli Uyarı): Hayvanlar yaklaştığında sesli bir uyarı vermek için bir buzzer kullanabilirsiniz.
-Buzzer (Sesli Uyarı) Parça isim : [ --- Buzzer, 5V-12V, 12mm --- ]
-
-9V Alkalin Pil: Arduino ve sensörleri beslemek için bir 9V pil gereklidir.
-9V Alkalin Pil: Arduino  Parça isim : [ --- Arduino 9V Pil Besleme Kablosu --- ]
-
-Breadboard ve Jumper Kablo: Devrenizi prototiplemek için bir breadboard ve jumper kabloları kullanabilirsiniz.
-Ultrasonik Sensör Parça isim : [ --- 830 Delikli Breadbord + 65 li Jumper Kablo Seti + Power Modülü --- ]
-
-Kutu veya Kasa: Tüm parçaları bir araya getirmek ve korumak için bir kutu veya kasa seçebilirsiniz.
-[   --   3D boyutlu tasarım için birçok program ve yazılım mevcuttur. Blender, Tinkercad, Fusion 360 gibi araçlarla kutu veya kasa tasarımınızı oluşturabilir ve 3D yazıcı ile basabilirsiniz. İyi çalışmalar!   ---   ]
-
-
-
-
-
-
-						###	Köpeğim mi (Eğer köpeklerden korkuyorsanız)	###
-
-Proje Adı : " Kopek-Kovucu.ino "
-
-Arduino tabanlı bir köpek kovucu oluşturmak için bazı temel parçaları satın almanız gerekecektir. İşte bu projede kullanabileceğiniz bazı parçalar:
+		### ÖZELLIKLER: ###	
+-----------
+✓ PIR kesmesi ile aninda tetiklenme (guch tasarrufu)
+✓ 15-25 kHz arasi frekans tarama (hayvanlar alismaz)
+✓ Her tetiklemede 10 saniye calisir
+✓ Iki tetikleme arasi 5 saniye bekleme (cooldown)
+✓ LED ile durum gosterimi
+✓ Arduino Uno, Nano, ESP32, ESP8266 ile uyumlu
 
 
-Ultrasonik Sensör: Hayvanların yaklaşmasını algılamak için ultrasonik sensör kullanabilirsiniz. Bu sensör, mesafe ölçümü yaparak hayvanların ne kadar yakın olduğunu tespit eder.
-Ultrasonik Sensör Parça isim : [ --- HC-SR04 Mesafe Sensörü --- ]
-
-Arduino Kartı: Arduino Uno veya Arduino Nano gibi bir mikrodenetleyici kartı seçebilirsiniz. Bu kart, sensörlerle iletişim kurmanızı sağlar.
-Arduino Kartı Parça isim : [ --- Arduino Klon Nano V3.0 Mikrodenetleyici Kart --- ]
-
-Buzzer (Sesli Uyarı): Hayvanlar yaklaştığında sesli bir uyarı vermek için bir buzzer kullanabilirsiniz.
-Buzzer (Sesli Uyarı) Parça isim : [ --- Buzzer, 5V-12V, 12mm --- ]
-
-9V Alkalin Pil: Arduino ve sensörleri beslemek için bir 9V pil gereklidir.
-9V Alkalin Pil: Arduino  Parça isim : [ --- Arduino 9V Pil Besleme Kablosu --- ]
-
-Breadboard ve Jumper Kablo: Devrenizi prototiplemek için bir breadboard ve jumper kabloları kullanabilirsiniz.
-Ultrasonik Sensör Parça isim : [ --- 830 Delikli Breadbord + 65 li Jumper Kablo Seti + Power Modülü --- ]
+	### YUKLEME:	###
+--------
+1. Arduino IDE acin
+2. Dosya > Ac > pet_repellent.ino secin
+3. Araclar > Kart > (Kartinizi secin: Arduino Uno, ESP32 Dev Module, vb.)
+4. Araclar > Port > (COM portunuzu secin)
+5. Yukle (Ok butonu)
 
 
-Kutu veya Kasa: Tüm parçaları bir araya getirmek ve korumak için bir kutu veya kasa seçebilirsiniz.
-[   --   3D boyutlu tasarım için birçok program ve yazılım mevcuttur. Blender, Tinkercad, Fusion 360 gibi araçlarla kutu veya kasa tasarımınızı oluşturabilir ve 3D yazıcı ile basabilirsiniz. İyi çalışmalar!   ---   ]
+		###	KULLANIM: 	###
+---------
+- Cihaz guc aldiginda PIR 30-60 sn ısınır (normal)
+- LED yanik = ultraseonic aktif
+- LED sonuk = bekleme modu
+- Serial Monitor (115200 baud) acarsaniz loglari gorursunuz
 
 
+		###	PIL ILE CALISTIRMA (ESP32 ICIN): 	###
+--------------------------------
+Daha dusuk guc icin setup() icine asagidaki satirlari ekleyin:
 
-						###	Kedi mi? (Eğer kedilerden korkuyorsanız)	###
-
-Proje Adı : " Kedi-Kovucu.ino "
-
-Arduino tabanlı bir kedi kovucu oluşturmak için bazı temel parçaları satın almanız gerekecektir. İşte bu projede kullanabileceğiniz bazı parçalar:
-
-
-Ultrasonik Sensör: Hayvanların yaklaşmasını algılamak için ultrasonik sensör kullanabilirsiniz. Bu sensör, mesafe ölçümü yaparak hayvanların ne kadar yakın olduğunu tespit eder.
-Ultrasonik Sensör Parça isim : [ --- HC-SR04 Mesafe Sensörü --- ]
-
-Arduino Kartı: Arduino Uno veya Arduino Nano gibi bir mikrodenetleyici kartı seçebilirsiniz. Bu kart, sensörlerle iletişim kurmanızı sağlar.
-Arduino Kartı Parça isim : [ --- Arduino Klon Nano V3.0 Mikrodenetleyici Kart --- ]
-
-Buzzer (Sesli Uyarı): Hayvanlar yaklaştığında sesli bir uyarı vermek için bir buzzer kullanabilirsiniz.
-Buzzer (Sesli Uyarı) Parça isim : [ --- Buzzer, 5V-12V, 12mm --- ]
-
-9V Alkalin Pil: Arduino ve sensörleri beslemek için bir 9V pil gereklidir.
-9V Alkalin Pil: Arduino  Parça isim : [ --- Arduino 9V Pil Besleme Kablosu --- ]
-
-Breadboard ve Jumper Kablo: Devrenizi prototiplemek için bir breadboard ve jumper kabloları kullanabilirsiniz.
-Ultrasonik Sensör Parça isim : [ --- 830 Delikli Breadbord + 65 li Jumper Kablo Seti + Power Modülü --- ]
-
-Kutu veya Kasa: Tüm parçaları bir araya getirmek ve korumak için bir kutu veya kasa seçebilirsiniz.
-[   --   3D boyutlu tasarım için birçok program ve yazılım mevcuttur. Blender, Tinkercad, Fusion 360 gibi araçlarla kutu veya kasa tasarımınızı oluşturabilir ve 3D yazıcı ile basabilirsiniz. İyi çalışmalar!   ---   ]
+  esp_sleep_enable_ext0_wakeup(GPIO_NUM_2, 1); // PIR pini ile uyan
+  // ... kodun sonuna, loop() bitisinden once:
+  if (!isActive && (millis() - lastTrigger > 30000)) {
+    Serial.println("Deep sleep...");
+    esp_deep_sleep_start();
+  }
 
 
+	###	SORUN GIDERME:	###
+--------------
+- Hoparlor ses cikarmiyorsa: Farkli bir piezo/ultrasonik model deneyin (15-25 kHz)
+- PIR sürekli tetikleniyorsa: Jumper'i "L" (single trigger) moduna cekin
+- Hassasiyet: PIR üzerindeki potansiyometrelerle ayarlanir
+
+
+		### GELISTIRME FIKIRLERI:	###
+---------------------
+- HC-SR04 mesafe sensoru ekleyerek "yaklasinca calistir"
+- Fotodirenç (LDR) ile gece/gündüz modu
+- Bluetooth/WiFi ile uzaktan ac/kapa
+- Solar panel + LiPo sarj modulu (TP4056) ile off-grid
+- Ses seviyesi ayari (potansiyometre ile)
+
+
+		### GÜVENLIK UYARISI:	### 
+-----------------
+- Ultrasonik ses insan duymasa da uzun sure yakininda rahatsizlik verebilir
+- Hayvanlara zarar vermez, sadece rahatsız edip uzaklastirir
+- Yasal duzenlemelere uygunluk kontrol edin
+
+
+LISANS:
+-------
+MIT License - Serbest kullanım, degistirme, dagitim.
 
 
 
