@@ -1,27 +1,27 @@
 				###	Köpeğim mi, kedi mi? (Eğer köpeklerden ve Kedilerden korkuyorsanız)	###
 
 
-	### DOSYALAR: ###	
+DOSYALAR:
 - Kopek-Kedi-Kovucu.ino   -> Ana kod (Arduino IDE ile yukle)
 - README.txt          -> Bu dosya
 
 BAĞLANTI SEMASI:
 ----------------
 
-	### PIR HAREKET SENSORU (HC-SR501): ###	
+PIR HAREKET SENSORU (HC-SR501):
   VCC  -> 5V (veya 3V3)
   GND  -> GND
   OUT  -> D2 (Arduino/ESP32)
 
-	### ULTRASONIK HOPARLOR / PIEZO BUZZER (15-25 kHz calisan): ### 
+ULTRASONIK HOPARLOR / PIEZO BUZZER (15-25 kHz calisan):
   + (Kirmizi)  -> D3 (PWM pini)
   - (Siyah)    -> GND
 
-		### DURUM LED'I (OPSIYONEL): ###	
+DURUM LED'I (OPSIYONEL):
   Anot (+) -> 220 ohm direnc -> D13
   Katot (-) -> GND
 
-		### ÖZELLIKLER: ###	
+ÖZELLIKLER:
 -----------
 ✓ PIR kesmesi ile aninda tetiklenme (guch tasarrufu)
 ✓ 15-25 kHz arasi frekans tarama (hayvanlar alismaz)
@@ -31,7 +31,7 @@ BAĞLANTI SEMASI:
 ✓ Arduino Uno, Nano, ESP32, ESP8266 ile uyumlu
 
 
-	### YUKLEME:	###
+YÜKLEME:
 --------
 1. Arduino IDE acin
 2. Dosya > Ac > pet_repellent.ino secin
@@ -40,7 +40,7 @@ BAĞLANTI SEMASI:
 5. Yukle (Ok butonu)
 
 
-		###	KULLANIM: 	###
+KULLANIM:
 ---------
 - Cihaz guc aldiginda PIR 30-60 sn ısınır (normal)
 - LED yanik = ultraseonic aktif
@@ -48,7 +48,7 @@ BAĞLANTI SEMASI:
 - Serial Monitor (115200 baud) acarsaniz loglari gorursunuz
 
 
-		###	PIL ILE CALISTIRMA (ESP32 ICIN): 	###
+PIL ILE CALISTIRMA (ESP32 ICIN):
 --------------------------------
 Daha dusuk guc icin setup() icine asagidaki satirlari ekleyin:
 
@@ -60,14 +60,14 @@ Daha dusuk guc icin setup() icine asagidaki satirlari ekleyin:
   }
 
 
-	###	SORUN GIDERME:	###
+SORUN GIDERME:
 --------------
 - Hoparlor ses cikarmiyorsa: Farkli bir piezo/ultrasonik model deneyin (15-25 kHz)
 - PIR sürekli tetikleniyorsa: Jumper'i "L" (single trigger) moduna cekin
 - Hassasiyet: PIR üzerindeki potansiyometrelerle ayarlanir
 
 
-		### GELISTIRME FIKIRLERI:	###
+GELISTIRME FIKIRLERI:
 ---------------------
 - HC-SR04 mesafe sensoru ekleyerek "yaklasinca calistir"
 - Fotodirenç (LDR) ile gece/gündüz modu
@@ -76,7 +76,7 @@ Daha dusuk guc icin setup() icine asagidaki satirlari ekleyin:
 - Ses seviyesi ayari (potansiyometre ile)
 
 
-		### GÜVENLIK UYARISI:	### 
+GÜVENLIK UYARISI:
 -----------------
 - Ultrasonik ses insan duymasa da uzun sure yakininda rahatsizlik verebilir
 - Hayvanlara zarar vermez, sadece rahatsız edip uzaklastirir
