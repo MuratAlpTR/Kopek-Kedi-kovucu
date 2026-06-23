@@ -3,7 +3,7 @@
 
 DOSYALAR:
 - Kopek-Kedi-Kovucu.ino   -> Ana kod (Arduino IDE ile yukle)
-- README.txt          -> Bu dosya
+- README.md          -> Bu dosya
 
 BAĞLANTI SEMASI:
 ----------------
